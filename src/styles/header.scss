@@ -1,0 +1,29 @@
+nav {
+    display: flex;
+    align-items: center;
+    background-color: $bg-dark;
+    padding: 20px 80px;
+    min-height: 10vh;
+
+    * {
+        background-color: $bg-dark;
+    }
+
+    h1 {
+        font-size: 36px;
+    }
+    
+    input {
+        width: 500px;
+        padding: 10px;
+        margin-left: 600px;
+        color: $primary;
+        font-size: 16px;
+        border: none;
+        box-shadow: 2px 4px 5px rgb(2, 0, 0);
+
+        &:active {
+            border-color: rgb(2, 0, 0);
+        }
+    }
+}

@@ -1,0 +1,10 @@
+section {
+
+    .movieCards-container {
+        padding: 75px;
+        display: grid;
+        grid-template-columns: repeat(5, 1fr);
+        place-items: center;
+        row-gap: 50px;
+    }
+}
