@@ -17,7 +17,7 @@ const AppProvider = ({ children }) => {
 
 
     const getMovies = async() => {
-        setIsLoading(true)
+        // setIsLoading(false)
         await axios.get(`${API_URL}/search/movie?api_key=${API_KEY}&language=en-US&query=${search}`)
             .then((res) => {
                 setMovies(res.data.results)

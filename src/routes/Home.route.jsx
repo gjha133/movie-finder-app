@@ -1,14 +1,14 @@
 import React, { useContext } from 'react'
 import { AppContext } from '../context/context'
 import Loading from '../components/Loading.component'
-import Error from './Error.page'
+import Error from './Error.route'
 import MovieList from '../components/MovieList.component'
 
 import { FaArrowCircleUp } from 'react-icons/fa';
 
 const Home = () => {
     
-    const { isError, isLoading } = useContext(AppContext)
+    const { isError, isLoading, search } = useContext(AppContext)
 
     const scrollToTop = () => {
         window.scrollTo({
@@ -20,6 +20,7 @@ const Home = () => {
     return (
         <section>
             {isError && <Error />}
+            {isError == false && search === '' && isLoading && <Loading />}
             <MovieList />
             {
                 document.documentElement.scrollTop > 300 && 
