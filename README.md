@@ -6,4 +6,16 @@ https://movie-finder-react-one.vercel.app/
 
 ### Search Movies using Tmdb API.
 ### Fully responsive.
-### Implemented infinite-scroll, code-splitting.
+### Implemented infinite-scroll, lazy-loading and code-splitting.
+
+
+
+## How to run the code on your own device?
+Run these commands
+<br>
+```npm i```
+<br>
+```npm run dev```
+<br>
+
+Then open ```http://localhost:5173/``` on your browser
