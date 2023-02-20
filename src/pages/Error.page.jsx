@@ -1,15 +1,10 @@
 import React from 'react'
-import { Link } from 'react-router-dom'
 
-const Error = ({msg}) => {
+const Error = () => {
     return (
-        <div>
-            <h1>{msg}</h1>
-            <Link>
-                <button>
-                    Go back to Home
-                </button>
-            </Link>
+        <div className='error'>
+            <h2>Error encountered.</h2>
+            <h1>Refresh!</h1>
         </div>
     )
 }

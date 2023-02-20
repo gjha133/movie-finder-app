@@ -1,30 +1,32 @@
 import React, { useContext } from 'react'
 import { AppContext } from '../context/context'
-import MovieCard from '../components/MovieCard.component'
 import Loading from '../components/Loading.component'
 import Error from './Error.page'
+import MovieList from '../components/MovieList.component'
+
+import { FaArrowCircleUp } from 'react-icons/fa';
 
 const Home = () => {
     
-    const { movies, isLoading, isError } = useContext(AppContext)
-    console.log(isError.msg)
+    const { isError, isLoading } = useContext(AppContext)
+
+    const scrollToTop = () => {
+        window.scrollTo({
+            top: 0,
+            behavior: 'smooth'
+        });
+    };
+
     return (
         <section>
+            {isError && <Error />}
+            <MovieList />
             {
-                isLoading ? <Loading/> 
-                : 
-                    <div className='movieCards-container'>
-                        {
-                            movies.map(movie => 
-                                <MovieCard movie={movie} key={movie.id} />
-                            )
-                        }
-                    </div>
-            }           
-            {
-                (isError.show && isError.msg) 
-                && <Error msg={isError.msg} />
-            } 
+                document.documentElement.scrollTop > 300 && 
+                (<button className='top'>
+                    <FaArrowCircleUp onClick={scrollToTop}/>
+                </button>)
+            }
         </section>
     )
 }

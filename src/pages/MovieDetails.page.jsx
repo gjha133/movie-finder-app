@@ -14,12 +14,12 @@ const MovieDetails = () => {
 
     const URL = `${API_URL}movie/${id.substring(1)}?api_key=${API_KEY}&language=en-US`
 
-    const getMovie = async(url) => {
+    const getMovieDetails = async(url) => {
         setIsLoading(true)
         await axios.get(url)
         .then((res) => {
-            setMovie(res.data)
             setIsLoading(false)
+            setMovie(res.data)
         })
         .catch((err) => {
             setIsError({
@@ -30,14 +30,12 @@ const MovieDetails = () => {
     }
 
     useEffect(()=>{
-        getMovie(URL)
-    }, [])
+        getMovieDetails(URL)
+    }, [0])
     
     return (
         <section className='movieDetail'>
-            {
-                isLoading ? <Loading/>
-                :
+            {isLoading ? <Loading /> : 
                 <div className="container" 
                 style={{
                     backgroundImage: `url(${`${imgBaseUrl}${movie.backdrop_path}`})`
@@ -59,12 +57,11 @@ const MovieDetails = () => {
                                 {movie.release_date} 
                             </p>
                             <p>
-                                Avg. Rating: {movie.vote_average}/10
+                                {movie.vote_average}/10
                             </p>
-                            
                         </div>
                         <div className='tagline'>
-                            {movie.tagline}
+                            "{movie.tagline}"
                         </div>
                         <div className='overview-container'>
                             <p className='overview'>Overview</p>
@@ -75,10 +72,10 @@ const MovieDetails = () => {
                     </div>
                 </div>
                 <Link to={'/'} >
-                    <button>Go back to Home</button>
+                    <button>Back to Home</button>
                 </Link>
             </div>
-            }
+            } 
         </section>
     )
 }

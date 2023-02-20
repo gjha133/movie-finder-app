@@ -1,25 +1,19 @@
 import React, { useContext } from 'react'
 import { AppContext } from '../context/context'
-import { BiSearchAlt } from 'react-icons/bi'
 import { Link } from 'react-router-dom'
 
 const Header = () => {
 
-    const { search, setSearch, setIsLoading } = useContext(AppContext)
+    const { search, setSearch, setIsLoading, setPage, setMovies } = useContext(AppContext)
 
     const handleChange = (e) => {
         setIsLoading(true)
         setSearch(e.target.value)
     }
 
-    const handleClick = () => {
-        setIsLoading(true)
-        setSearch('')
-    }
-
     return (
         <nav>
-            <Link to={'/'} onClick={handleClick}>
+            <Link to={'/'}>
                 <h1>Movie Finder</h1>
             </Link>
             <div>
