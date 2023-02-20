@@ -1,6 +1,7 @@
 import React, { useContext } from 'react'
 import { AppContext } from '../context/context'
 import MovieCard from './MovieCard.component'
+import { LazyLoadComponent } from 'react-lazy-load-image-component';
 
 const MovieList = () => {
     const { movies } = useContext(AppContext) 
@@ -8,7 +9,9 @@ const MovieList = () => {
         <div className='movieCards-container'>
             {
                 movies.map(movie => 
-                    <MovieCard movie={movie} key={movie.id} />
+                    <LazyLoadComponent key={movie.id}>
+                        <MovieCard movie={movie} key={movie.id}/>
+                    </LazyLoadComponent>
                 )
             }
         </div>

@@ -12,9 +12,9 @@ const MovieCard = ({movie}) => {
                 <div className='movieCard' >
                     <LazyLoadImage
                         alt='movie-poster'
-                        effect="blur"
                         src={`${imgBaseUrl}/${movie.poster_path}`} 
                         className="moviecard-image"
+                        effect="blur"
                     />
                     <div className='title'>{movieName}</div>
                     <button className="show">Show details</button>
