@@ -1,9 +1,14 @@
 nav {
     display: flex;
     align-items: center;
+    justify-content: space-between;
     background-color: $bg-dark;
     padding: 20px 80px;
     min-height: 10vh;
+
+    @media screen and (max-width: 800px) {
+        padding: 20px;
+    }
 
     * {
         background-color: $bg-dark;
@@ -11,19 +16,37 @@ nav {
 
     h1 {
         font-size: 36px;
+        
+        @media screen and (max-width: 800px) {
+            font-size: 16px;
+        }
     }
     
     input {
-        width: 500px;
+        width: 400px;
         padding: 10px;
-        margin-left: 600px;
         color: $primary;
-        font-size: 16px;
         border: none;
+        font-size: 16px;
         box-shadow: 2px 4px 5px rgb(2, 0, 0);
 
         &:active {
-            border-color: rgb(2, 0, 0);
+            border-color: white;
+        }
+
+        &::placeholder {
+            color: white;
+            font-size: 20px;
+        }
+
+        @media screen and (max-width: 800px) {
+            width: 150px;
+            padding: 5px;
+            font-size: 10px;
+
+            &::placeholder {
+                font-size: 10px;
+            }
         }
     }
 }

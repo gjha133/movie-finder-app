@@ -12,65 +12,71 @@ const AppProvider = ({ children }) => {
     const [isLoading, setIsLoading] = useState(true)
     const [movies, setMovies] = useState([])
     const [search, setSearch] = useState('')
-    const [isError, setIsError] = useState({
-        show: 'false',
-        msg: ''
-    })
-    
+    const [page, setPage] = useState(1)
+    const [isError, setIsError] = useState(false)
 
-    const getMovies = async(url) => {
-        setIsLoading(true)
-        await axios.get(url)
-        .then((res) => {
-            setMovies(res.data.results)
-            setIsLoading(false)
-        })
-        .catch((err) => {
-            setIsError({
-                show: true,
-                msg: err
+
+    const getMovies = async() => {
+        // setIsLoading(false)
+        await axios.get(`${API_URL}/search/movie?api_key=${API_KEY}&language=en-US&query=${search}`)
+            .then((res) => {
+                setMovies(res.data.results)
+                setIsLoading(false)
             })
-        })
+            .catch((err) => {
+                setIsError(true)
+            })
     }
 
-    const getPopularMovies = async(url) => {
+    const getPopularMovies = async() => {
         setIsLoading(true)
-        await axios.get(url)
-        .then((res) => {
-            setMovies(res.data.results)
-            setIsLoading(false)
-        })
-        .catch((err) => {
-            setIsError({
-                show: true,
-                msg: err
+        await axios.get(`${API_URL}/discover/movie?sort_by=popularity.desc&api_key=${API_KEY}&language=en-US&page=${page}`)
+            .then((res) => {
+                setMovies(prev => [...prev, ...res.data.results])
+                setIsLoading(false)
             })
-        })
+            .catch((err) => {
+                // console.log(err)
+                setIsError(true)
+            })
     }
 
-    
-    
-    useEffect(()=>{
-        if(search === '') {
-            getPopularMovies(`${API_URL}/discover/movie?sort_by=popularity.desc&api_key=${API_KEY}&language=en-US&page=1`)
-        } else {
-            getMovies(`${API_URL}/search/movie?api_key=${API_KEY}&language=en-US&query=${search}`)
-        }
+    useEffect(() => {
+        getMovies()
     }, [search])
 
+    useEffect(() => {
+        if(search == '') {
+            getPopularMovies()
+        }
+    }, [search, page])
+
+    useEffect(() => {
+        window.addEventListener('scroll', handleScroll)
+        return () => window.removeEventListener('scroll', handleScroll)
+    }, [])
+
+    const handleScroll = async () => {
+        if(window.innerHeight + document.documentElement.scrollTop + 1 >= document.documentElement.scrollHeight) {
+            setIsLoading(true)
+            setPage(prev => prev + 1)
+        }
+    }
 
     const states = {
-        movies, 
+        movies,
         setMovies,
-        isLoading, 
+        isLoading,
         setIsLoading,
         isError,
-        search, 
+        search,
         setSearch,
+        page, 
+        setPage
     }
 
     return (
-        <AppContext.Provider 
+        <AppContext.Provider
             value={states}
         >
             {children}

@@ -1,5 +1,7 @@
 import { Link } from "react-router-dom"
 import { imgBaseUrl } from "../context/context"
+import { LazyLoadImage } from 'react-lazy-load-image-component';
+import 'react-lazy-load-image-component/src/effects/blur.css';
 
 const MovieCard = ({movie}) => {
     let movieName = movie.title.substring(0,24)
@@ -8,9 +10,14 @@ const MovieCard = ({movie}) => {
     return (
             <Link to={`/movie/:${movie.id}`} >
                 <div className='movieCard' >
-                    <img src={`${imgBaseUrl}/${movie.poster_path}`} alt="" />
+                    <LazyLoadImage
+                        alt='movie-poster'
+                        src={`${imgBaseUrl}/${movie.poster_path}`} 
+                        className="moviecard-image"
+                        effect="blur"
+                    />
                     <div className='title'>{movieName}</div>
-                    <button>Show details</button>
+                    <button className="show">Show details</button>
                 </div>
             </Link>
     )

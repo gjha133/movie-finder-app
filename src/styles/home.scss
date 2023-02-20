@@ -1,10 +1,46 @@
 section {
-
     .movieCards-container {
         padding: 75px;
         display: grid;
         grid-template-columns: repeat(5, 1fr);
         place-items: center;
         row-gap: 50px;
+
+        @media screen and (max-width: 480px) {
+            padding: 10px;
+            grid-template-columns: 1fr 1fr;
+            row-gap: 10px;
+        }
+
+        @media screen and (min-width: 481px) and (max-width: 768px){
+            padding: 20px;
+            grid-template-columns: 1fr 1fr 1fr;
+            row-gap: 10px;
+        }
+
+        @media screen and (min-width: 769px) and (max-width: 1366px){
+            padding: 20px;
+            grid-template-columns: 1fr 1fr 1fr 1fr;
+            row-gap: 10px;
+        }
+    }
+
+    .top {
+        padding: 5px;
+        font-size: 30px;
+        position: fixed;
+        bottom: 2.5%;
+        right: 2.5%;
+        color: color;
+        border-radius: 5px;
+        transition: all 0.3s;
+
+        &:hover {
+            opacity: 0.6;
+        }
+
+        @media screen and (max-width: 800px) {
+            display: none;
+        }
     }
 }

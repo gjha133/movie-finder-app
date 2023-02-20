@@ -1,8 +1,8 @@
 import { BrowserRouter, Route, Routes } from "react-router-dom"
 import Header from "./components/Header.component"
-import Home from "./pages/Home.page"
-import MovieDetails from "./pages/MovieDetails.page"
-import Error from "./pages/Error.page"
+import Home from "./routes/Home.route"
+import MovieDetails from "./routes/MovieDetails.route"
+import Error from "./routes/Error.route"
 import { AppProvider } from "./context/context"
 
 function App() {

@@ -7,6 +7,22 @@
     justify-content: center;
     position: relative;
     transition: transform 0.5s;
+
+    @media screen and (max-width: 480px) {
+        height: 200px;
+        width: 100px;
+    }
+
+    @media screen and (min-width: 481px) and (max-width: 768px){
+        height: 250px;
+        width: 150px;
+    }
+
+    @media screen and (min-width: 769px) and (max-width: 1366px){
+        height: 300px;
+        width: 200px;
+    }
+
     &:hover {
         img {
             transform: translateY(-10px);
@@ -23,11 +39,17 @@
     
 
     img {
-        height: 80%;
+        height: 100%;
         width: 100%;
         object-fit: contain;
         transition: transform 0.5s; 
-        border-radius: 35px 0px;           
+        border-radius: 35px 0px; 
+        padding: unset;
+        margin: unset;
+        
+        @media screen and (max-width: 800px) {
+            border-radius: 10px;
+        }
     }
     
     .title {
@@ -41,13 +63,32 @@
             transform: translateY(-2.5px);
             color: white;
         }
+
+        @mixin common {
+            width: unset;
+            margin-top: unset;
+        }
+
+        @media screen and (max-width: 480px) {
+            font-size: 10px;
+            @include common;
+        }
+    
+        @media screen and (min-width: 481px) and (max-width: 768px){
+            font-size: 12px;
+            @include common;
+        }
+    
+        @media screen and (min-width: 769px) and (max-width: 1366px){
+            font-size: 14px;
+            @include common;
+        }
     }
 
-    button {
+    .show {
         z-index: 10;
         position: absolute;
         bottom: 100px;
         display: none;
     }
-    
 }
