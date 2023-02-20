@@ -4,6 +4,8 @@ import { Link, useParams } from 'react-router-dom'
 import { AppContext } from '../context/context';
 import { API_KEY, API_URL, imgBaseUrl } from '../context/context';
 import Loading from '../components/Loading.component';
+import { LazyLoadImage } from 'react-lazy-load-image-component';
+import 'react-lazy-load-image-component/src/effects/blur.css';
 
 
 const MovieDetails = () => {
@@ -42,7 +44,12 @@ const MovieDetails = () => {
                 }}
                 >
                 <div className="details-container">
-                    <img src={`${imgBaseUrl}/${movie.poster_path}`} alt="" className='movie-img'/> 
+                    <LazyLoadImage
+                        alt='movie-poster'
+                        effect="blur"
+                        src={`${imgBaseUrl}/${movie.poster_path}`}
+                        className="movie-img"
+                    />
                     <div className='info-container'>
                         <p className='title'>{movie.title}</p>
                         <div className="date">
