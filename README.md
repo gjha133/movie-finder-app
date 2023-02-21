@@ -6,7 +6,7 @@ https://movie-finder-react-one.vercel.app/
 
 ### Search Movies using Tmdb API.
 ### Fully responsive.
-### Implemented infinite-scroll, lazy-loading and code-splitting.
+### Implemented infinite-scroll and lazy-loading.
 
 
 
