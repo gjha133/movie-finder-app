@@ -11,7 +11,7 @@ https://movie-finder-react-one.vercel.app/
 
 
 ## How to run the code on your own device?
-Run these commands
+Clone the project and run these commands.
 <br>
 ```npm i```
 <br>
