@@ -12,16 +12,16 @@ section {
             row-gap: 10px;
         }
 
-        @media screen and (min-width: 481px) and (max-width: 768px){
+        @media screen and (min-width: 481px) and (max-width: 900px){
             padding: 20px;
             grid-template-columns: 1fr 1fr 1fr;
-            row-gap: 10px;
+            row-gap: 30px;
         }
 
-        @media screen and (min-width: 769px) and (max-width: 1366px){
+        @media screen and (min-width: 901px) and (max-width: 1366px){
             padding: 20px;
             grid-template-columns: 1fr 1fr 1fr 1fr;
-            row-gap: 10px;
+            row-gap: 60px;
         }
     }
 
